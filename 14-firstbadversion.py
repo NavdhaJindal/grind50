@@ -8,7 +8,8 @@ class Solution:
         min_version = n + 1
 
         while start <= end:
-            current_version = (start + end)//2
+            # current_version = (start + end)//2
+            current_version = start + (end - start)//2
             if isBadVersion(current_version):
                 min_version = current_version
                 end = current_version - 1
