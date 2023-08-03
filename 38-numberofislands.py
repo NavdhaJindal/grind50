@@ -13,18 +13,22 @@ class Solution:
         def bfs(r, c):
             q = deque()
             q.append((r,c))
+            grid[r][c] = "*"
 
             while q: 
                 r,c = q.popleft()
                 if r + 1 < max_rows and grid[r + 1][c] == "1": 
                     q.append((r + 1, c))
+                    grid[r + 1][c] = "*"
                 if c + 1 < max_cols and grid[r][c + 1] == "1": 
                     q.append((r, c + 1))
+                    grid[r][c + 1] = "*"
                 if r > 0 and grid[r - 1][c] == "1": 
                     q.append((r - 1, c))
+                    grid[r - 1][c] = "*"
                 if c > 0 and grid[r][c - 1] == "1": 
                     q.append((r, c - 1))
-                grid[r][c] = "*"
+                    grid[r][c - 1] = "*"
 
 
         for r in range(max_rows):
@@ -32,8 +36,41 @@ class Solution:
                 if grid[r][c] == "1":
                     bfs(r,c)
                     island_count += 1
+                    print(island_count)
 
         return island_count
+        # if not grid: 
+        #     return 0
+
+        # max_rows = len(grid)
+        # max_cols = len(grid[0])
+
+        # island_count = 0
+
+        # def bfs(r, c):
+        #     q = deque()
+        #     q.append((r,c))
+
+        #     while q: 
+        #         r,c = q.popleft()
+        #         if r + 1 < max_rows and grid[r + 1][c] == "1": 
+        #             q.append((r + 1, c))
+        #         if c + 1 < max_cols and grid[r][c + 1] == "1": 
+        #             q.append((r, c + 1))
+        #         if r > 0 and grid[r - 1][c] == "1": 
+        #             q.append((r - 1, c))
+        #         if c > 0 and grid[r][c - 1] == "1": 
+        #             q.append((r, c - 1))
+        #         grid[r][c] = "*"
+
+
+        # for r in range(max_rows):
+        #     for c in range(max_cols):
+        #         if grid[r][c] == "1":
+        #             bfs(r,c)
+        #             island_count += 1
+
+        # return island_count
 
 # from collections import deque
 
